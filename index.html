@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+
+	<style type="text/css">
+		p{
+			padding: 0;margin: 0;
+		}
+		body{
+			/*background-color: black;*/
+			padding: 0;margin: 0;
+			background-image: url("img.jpg");
+		}
+		
+		#box{
+			perspective: 1000px;
+		}
+		#wrap{
+			/*width: 100%;
+			height: 100%;*/
+			width: 300px;
+			height: 450px;
+			position: relative;
+			transform-style: preserve-3d;
+			/*margin:auto auto;*/
+			margin-top: 25%;
+			margin-left: 7%;
+			border: 10px solid white;
+			/*background-image: url("img.jpg");*/
+		}
+		#diqiu{
+			/*position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 260px;
+			height: 260px;
+			margin-top: 50%;
+			margin-left: 15%;
+			transform: translateZ(80px);*/
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			margin-top: 83%;
+			transform: translateZ(120px);
+			color: white;
+			text-align: center;
+			font-size: 40px;
+		}
+		#text{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			margin-top: 98%;
+			transform: translateZ(200px);
+			color: white;
+			text-align: center;
+			font-size: 25px;
+		}
+		#dq{
+			width: 150px;
+			position: absolute;
+			left: 50%;
+			margin-left: -75px;
+			margin-top: 50px;
+			transform: translateZ(80px);
+		}
+
+	</style>
+</head>
+<body>
+<div id="box">
+	<!-- <img src='img.jpg' id="bg" /> -->
+	<div id="wrap">
+		<img src='diqiu.png' id="dq" />
+		<p id="diqiu">地球</p>
+		<p id="text">我们美丽的家园！</p>
+	</div>
+</div>
+	<script type="text/javascript" src='m.touch.js'></script>
+
+	<script type="text/javascript">
+		var wrap=document.getElementById('wrap');
+
+		css(wrap,'rotateY',0);
+		css(wrap,'rotateX',0);
+
+		window.addEventListener('deviceorientation',function(e){
+			var x=Math.round(e.beta);
+			var y=Math.round(e.gamma);
+			if(x<-75){x=-75}
+			if(x>75){x=75}
+			if(y<-75){y=-75}
+			if(y>75){y=75}
+			css(wrap,'rotateY',y*0.5);
+			css(wrap,'rotateX',x*0.5);
+		})
+		
+		
+	</script>
+</body>
+</html>
